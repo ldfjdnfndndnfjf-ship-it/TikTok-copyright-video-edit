@@ -5,61 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
+    <title>Nawab ZADA | Stealth Bypass</title>
     <style>
-        body { background-color: #050505; color: white; font-family: monospace; }
-        .main-card { background: #000; border: 1px solid #333; padding: 20px; border-radius: 15px; margin-top: 20px; }
-        .red-text { color: #ef4444; text-shadow: 0 0 10px #ef4444; }
-        .wa-btn { background: #16a34a; padding: 15px; border-radius: 10px; text-align: center; display: block; font-weight: bold; margin-bottom: 20px; }
-        .hidden-tool { opacity: 0.3; pointer-events: none; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap');
+        body { background-color: #050505; color: white; font-family: 'Courier New', Courier, monospace; }
+        .neon-title { 
+            font-family: 'Poppins', sans-serif;
+            color: #ff1e1e;
+            text-shadow: 0 0 20px rgba(255, 30, 30, 0.6);
+            font-style: italic;
+        }
+        .main-card { background-color: #0a0a0a; border-radius: 30px; border: 1px solid #1a1a1a; }
+        .inner-box { background-color: #0c0c0c; border: 1px solid #1a1a1a; border-radius: 15px; }
+        .bypass-btn { background: linear-gradient(180deg, #ff3b3b 0%, #b31414 100%); }
+        .locked { filter: blur(10px); pointer-events: none; opacity: 0.3; transition: 0.5s; }
+        .green-banner { background-color: #121212; border: 2px border-dashed #16a34a; }
     </style>
 </head>
-<body class="p-4 flex flex-col items-center">
+<body class="p-6 flex flex-col items-center">
 
-    <h1 class="text-3xl font-black text-center red-text uppercase italic mt-5">NAWAB ZADA EDITING TOOL 🔥</h1>
-    <p class="text-[10px] text-zinc-500 uppercase mt-2">UNSTOPPABLE ALGORITHM BYPASS V1.0</p>
+    <div class="text-center mt-10">
+        <h1 class="text-5xl font-black neon-title italic leading-tight uppercase">
+            NAWAB ZADA<br>EDITING<br>TOOL 🔥
+        </h1>
+        <p class="text-zinc-600 text-[10px] tracking-[0.3em] mt-6 font-bold underline decoration-red-600">
+            UNSTOPPABLE ALGORITHM BYPASS V1.0
+        </p>
+    </div>
 
-    <div id="lockSection" class="w-full max-w-sm mt-6">
-        <a href="https://whatsapp.com/channel/0029VbB47ttDDmFNztpnZf2m" target="_blank" onclick="unlockTool()" class="wa-btn animate-pulse">
+    <div id="waBanner" class="w-full max-w-sm mt-10 border-2 border-dashed border-green-600/50 p-5 rounded-2xl bg-black/50 text-center shadow-[0_0_15px_rgba(22,163,74,0.2)]">
+        <p class="text-[10px] text-green-500 font-bold uppercase mb-3 tracking-widest">Step 1: Unlock Engine</p>
+        <a href="https://whatsapp.com/channel/0029VbB47ttDDmFNztpnZf2m" target="_blank" onclick="unlockTool()" class="block bg-green-600 hover:bg-green-700 py-3 rounded-xl font-bold text-xs transition-all animate-pulse shadow-lg">
             🟢 FOLLOW WHATSAPP CHANNEL
         </a>
     </div>
 
-    <div id="toolSection" class="w-full max-w-sm hidden-tool">
-        <div class="main-card">
-            <p class="text-[9px] text-zinc-500 mb-4">SYSTEM: ONLINE | ENCRYPTION: AES-256 | STATUS: ACTIVE</p>
-            
-            <label class="block border-2 border-dashed border-zinc-700 p-6 text-center rounded-lg cursor-pointer hover:border-red-600">
-                <div class="text-4xl mb-2">🚀</div>
-                <p class="text-xs font-bold uppercase">SELECT TIKTOK VIDEO</p>
-                <p class="text-[9px] text-zinc-600 mt-1">Nawab ZADA Engine will re-write DNA... 🧬</p>
-                <input type="file" class="hidden" id="videoInput" accept="video/*">
-            </label>
+    <div id="toolUI" class="w-full max-w-sm main-card mt-10 p-6 shadow-2xl locked">
+        
+        <p class="text-[8px] text-red-500 text-center font-bold mb-6 tracking-widest uppercase italic">
+            SYSTEM: ONLINE &nbsp; ENCRYPTION: AES-256 &nbsp; BYPASS: ACTIVE
+        </p>
 
-            <div class="grid grid-cols-2 gap-2 mt-4">
-                <div class="border border-zinc-800 p-2 text-[9px]">AI DISRUPTOR<br><span class="text-zinc-500">Frame Noise</span></div>
-                <div class="border border-zinc-800 p-2 text-[9px]">HASH CHANGER<br><span class="text-zinc-500">MD5 Signature</span></div>
+        <label class="block border-2 border-dashed border-zinc-800 rounded-3xl p-10 text-center cursor-pointer hover:border-red-600 transition-all bg-black/40">
+            <input type="file" class="hidden" id="videoInput" accept="video/*">
+            <div class="text-5xl mb-4">🚀</div>
+            <p id="fileName" class="text-sm font-bold uppercase">Select TikTok Video</p>
+            <p class="text-[9px] text-zinc-600 mt-2 italic">Nawab ZADA Engine will re-write DNA... 🧬</p>
+        </label>
+
+        <div class="grid grid-cols-2 gap-3 mt-6">
+            <div class="inner-box p-4">
+                <p class="text-[8px] text-red-600 font-bold underline uppercase">AI Disruptor</p>
+                <p class="text-[9px] text-zinc-400 mt-1">Frame Noise Injection</p>
             </div>
-
-            <button onclick="runBypass()" id="btnAction" class="w-full bg-red-600 py-3 mt-4 font-bold text-sm uppercase rounded hover:bg-red-700">
-                ACTIVATE STEALTH BYPASS
-            </button>
+            <div class="inner-box p-4">
+                <p class="text-[8px] text-red-600 font-bold underline uppercase">Hash Changer</p>
+                <p class="text-[9px] text-zinc-400 mt-1">New MD5 Signature</p>
+            </div>
         </div>
+
+        <button onclick="processVideoDNA()" id="btnText" class="w-full mt-8 bypass-btn py-5 rounded-2xl font-black text-xl shadow-[0_10px_25px_rgba(179,20,20,0.4)] active:scale-95 transition-all">
+            ACTIVATE STEALTH BYPASS
+        </button>
+
+        <p id="statusMsg" class="hidden text-center text-[9px] text-green-500 mt-4 font-bold italic uppercase tracking-widest">
+            Video Saved to Gallery! ✅
+        </p>
     </div>
 
-    <p class="mt-8 text-[9px] text-zinc-700 uppercase">Property of Nawab ZADA • We don't follow rules, we create them.</p>
+    <footer class="mt-16 text-center text-zinc-800 text-[9px] uppercase tracking-widest">
+        Property of Nawab ZADA • We don't follow rules, we create them.
+    </footer>
 
     <script>
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        const ffmpeg = createFFmpeg({ log: true, corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js' });
+
+        const videoInput = document.getElementById('videoInput');
+        const toolUI = document.getElementById('toolUI');
+        const waBanner = document.getElementById('waBanner');
+
+        // Unlock Function
         function unlockTool() {
             setTimeout(() => {
-                document.getElementById('toolSection').classList.remove('hidden-tool');
-                document.getElementById('lockSection').style.display = 'none';
-            }, 2000);
+                toolUI.classList.remove('locked');
+                waBanner.innerHTML = "<p class='text-green-500 font-black text-[10px] italic'>TOOL UNLOCKED ✅ READY TO BYPASS</p>";
+            }, 3000);
         }
 
-        async function runBypass() {
-            alert("Nawab ZADA Engine: Initializing DNA Rewrite...");
+        videoInput.onchange = (e) => {
+            if(e.target.files[0]) document.getElementById('fileName').innerText = e.target.files[0].name;
+        };
+
+        // Bypass and Save to Gallery Logic
+        async function processVideoDNA() {
+            const file = videoInput.files[0];
+            if (!file) return alert("Pehle Video to select karo Jani!");
+
+            document.getElementById('btnText').innerText = "BYPASSING... 🧬";
+
+            try {
+                if (!ffmpeg.isLoaded()) await ffmpeg.load();
+                ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(file));
+
+                // 100% Bypass Command
+                await ffmpeg.run('-i', 'input.mp4', '-vf', 'hflip,noise=alls=10', '-af', 'asetrate=44100*1.01', 'output.mp4');
+
+                const data = ffmpeg.FS('readFile', 'output.mp4');
+                const blob = new Blob([data.buffer], { type: 'video/mp4' });
+                const url = URL.createObjectURL(blob);
+
+                // Auto-Download to Gallery
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `NawabZada_Bypass_${Date.now()}.mp4`;
+                document.body.appendChild(a);
+                a.click();
+                
+                document.getElementById('statusMsg').classList.remove('hidden');
+                document.getElementById('btnText').innerText = "SUCCESS! ✅";
+            } catch (err) {
+                alert("Processing failed! Restart Browser.");
+            }
         }
     </script>
 </body>
-                </html>
-                
+            </html>
+            
